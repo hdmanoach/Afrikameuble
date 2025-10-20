@@ -1,0 +1,79 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="max-w-md mx-auto mt-20 bg-white p-10 rounded-2xl shadow-2xl">
+  <h2 class="text-3xl font-bold text-center mb-8 text-orange-600">Créer un compte</h2>
+
+  {% if messages %}
+    {% for message in messages %}
+      <p class="text-center text-red-500 mb-3">{{ message }}</p>
+    {% endfor %}
+  {% endif %}
+
+  <form method="post" autocomplete="off" class="space-y-6">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <!-- Nom d'utilisateur -->
+    <div>
+      {{ form.username.label_tag }}
+      {{ form.username }}
+      {{ form.username.errors }}
+    </div>
+
+    <!-- Email -->
+    <div>
+      {{ form.email.label_tag }}
+      {{ form.email }}
+      {{ form.email.errors }}
+    </div>
+
+    <!-- Mot de passe -->
+    <div>
+      {{ form.password1.label_tag }}
+      <div class="relative">
+        {{ form.password1 }}
+        <button type="button" onclick="togglePassword('id_password1', this)"
+          class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-orange-600">👁️</button>
+      </div>
+      {{ form.password1.errors }}
+    </div>
+
+    <!-- Confirmation du mot de passe -->
+    <div>
+      {{ form.password2.label_tag }}
+      <div class="relative">
+        {{ form.password2 }}
+        <button type="button" onclick="togglePassword('id_password2', this)"
+          class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-orange-600">👁️</button>
+      </div>
+      {{ form.password2.errors }}
+    </div>
+
+    <button type="submit"
+      class="w-full bg-orange-600 hover:bg-orange-700 text-white py-4 rounded-xl font-semibold text-lg transition duration-200">
+      S’inscrire
+    </button>
+
+    <div class="text-center mt-4">
+      <a href="{% url 'login' %}" class="text-orange-600 hover:text-orange-700 font-semibold no-underline">
+        J’ai déjà un compte
+      </a>
+    </div>
+  </form>
+</div>
+
+<script>
+  function togglePassword(fieldId, btn) {
+    const input = document.getElementById(fieldId);
+    if (input.type === "password") {
+      input.type = "text";
+      btn.textContent = "🙈";
+    } else {
+      input.type = "password";
+      btn.textContent = "👁️";
+    }
+  }
+</script>
+{% endblock %}

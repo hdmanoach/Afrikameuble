@@ -1,0 +1,43 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="bg-orange-500 text-white py-30 text-center w-full" >
+    <div class="max-w-5xl mx-auto px-6">
+        <h1 class="text-6xl font-bold mb-4">À propos de <span class="text-yellow-300">AfrikaMeuble</span></h1>
+        <p class="text-2xl">
+            L’excellence du mobilier béninois, conçue avec passion et savoir-faire artisanal.  
+            Chaque pièce incarne la qualité, le confort et le style pour embellir votre intérieur.
+        </p>
+    </div>
+</section>
+
+<section class="bg-gray-50 text-gray-800 py-16">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
+        
+        <!-- Vision -->
+        <div>
+            <h2 class="text-2xl font-semibold text-green-700 mb-4">Notre Vision</h2>
+            <p class="text-lg leading-relaxed">
+                Être la référence du meuble haut de gamme au Bénin et en Afrique de l’Ouest.  
+                Nous aspirons à offrir des meubles uniques, alliant élégance, durabilité et confort,  
+                tout en soutenant la production locale et un design respectueux de l’environnement.
+            </p>
+        </div>
+
+        <!-- Valeurs -->
+        <div>
+            <h2 class="text-2xl font-semibold text-green-700 mb-4">Nos Valeurs</h2>
+            <ul class="space-y-2 text-lg">
+                <li>🛋️ <strong>Qualité & Esthétique</strong> — Des finitions soignées et un design moderne.</li>
+                <li>🤝 <strong>Professionnalisme</strong> — Un service client à l’écoute et attentionné.</li>
+                <li>🌱 <strong>Durabilité</strong> — Des matériaux respectueux de la nature et solides.</li>
+                <li>💚 <strong>Confiance & Intégrité</strong> — Des engagements tenus et transparents.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

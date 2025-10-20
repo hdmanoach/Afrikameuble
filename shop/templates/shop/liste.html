@@ -1,0 +1,53 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="relative w-full h-[50vh] flex items-center justify-center mb-12 mt-30 rounded-2xl overflow-hidden shadow-lg">
+    <!-- Image (z-0 tout au fond) -->
+    <img src="{% static 'images/c1.jpg' %}" 
+         alt="Hero image"
+         class="absolute inset-0 w-full h-full object-cover z-20" />
+
+    <!-- Overlay sombre (z-10 au-dessus de l’image) -->
+    <div class="absolute inset-0 bg-black bg-opacity-40 z-0"></div>
+
+    <!-- Texte (z-20 tout au-dessus) -->
+    <div class="relative text-center text-white z-30 px-6">
+        <h1 class="text-5xl font-bold mb-4">Bienvenue sur AfrikaMeuble</h1>
+        <p class="text-xl mb-6">Découvrez nos produits uniques</p>
+        <a href="#meubles" class="bg-orange-500 hover:bg-orange-600 px-6 py-3 rounded-lg">
+            Explorer
+        </a>
+    </div>
+</section>
+
+<div class="w-full mt-8" id="meubles">
+    <!-- Flex container -->
+    <div class="flex flex-wrap justify-center gap-8">
+        {% for m in meuble %}
+        <!-- Carte Meuble responsive -->
+        <div class="border-4 border-gray-400 rounded-2xl shadow-lg hover:shadow-2xl transition bg-white w-full sm:w-[20rem] md:w-[25rem] lg:w-[30rem]">
+            <!-- Image responsive -->
+            <div class="w-full h-[15rem] md:h-[20rem] overflow-hidden">
+                <img src="{{ m.image.url }}" alt="{{ m.nom }}" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Infos -->
+            <div class="p-6 space-y-4">
+                <h2 class="text-xl font-bold text-gray-900">{{ m.nom }}</h2>
+                <p class="text-gray-700 text-base line-clamp-4">{{ m.description }}</p>
+                <p class="text-indigo-700 font-extrabold text-xl">{{ m.prix }} FCFA</p>
+
+                <!-- Bouton -->
+                <a href="{% url 'register' %}" 
+                class="w-full bg-orange-500 text-white py-3 px-6 rounded-xl text-lg font-semibold hover:bg-orange-600 transition">
+                Commander
+                </a>
+                
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
